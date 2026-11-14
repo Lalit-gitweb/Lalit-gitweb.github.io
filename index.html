@@ -152,7 +152,7 @@ const MY_EMAIL = "lalitbhardwaj661@gmail.com";
 const GH = "https://github.com/Lalit-gitweb"; /* replace with each project's repo link */
 
 const projects = [
-  { title: "ISL Interpreter",
+  { title: "AI Interview Preparation App",
     tags: ["React 19","Vite","Tailwind CSS","Node.js","Express.js","MongoDB","Gemini API"],
     points: [
       "Full-stack AI interview preparation app. It turns a PDF resume and a job description into a report with technical and behavioral questions, a skill-gap analysis and a 14-day preparation roadmap.",
@@ -161,7 +161,12 @@ const projects = [
       "Five parallel Google Gemini calls, one per report section. Each response is checked against a Zod schema before it is saved.",
       "JWT sign-in with bcrypt hashing, httpOnly cookies and token blacklisting on logout, plus unit tests for input validation.",
       "A 45-second timeout per AI call, retries with exponential backoff on 503 errors, and a fallback report generator when Gemini is rate-limited or down."
-    ], code: GH },
+    ], code: "" },
+  { title: "Indian Sign Language Interpreter",
+    tags: ["Frontend"],
+    points: [
+      "Worked on the frontend of an Indian Sign Language interpreter."
+    ], code: "https://github.com/yadavayush834/Indian-sign-language-intepreter" },
   { title: "Kafka Distributed Systems",
     tags: ["React 19","Vite","Tailwind CSS","Node.js","Express.js"],
     points: [
@@ -170,7 +175,7 @@ const projects = [
       "Contributed to a two-tier matching algorithm using weighted merit scores (skills 40%, candidate choice 25%, location 20%, education 15%) and policy-based affirmative-action bonuses.",
       "Implemented admin policy-weight simulation with live KPI dashboards, explainable placement reasons and automatic waitlist promotion.",
       "Worked on JWT sign-in, bcrypt password hashing and role-based access for candidate and government portals."
-    ], code: GH }
+    ], code: "https://github.com/Lalit-gitweb/kafka-distributed-systems" }
 ];
 
 const skills = {
@@ -201,9 +206,11 @@ projects.forEach(p => {
   const pts = el("ul", "", "pts");
   p.points.forEach(t => pts.appendChild(el("li", t)));
   card.appendChild(pts);
-  const links = el("div", "", "links");
-  const a = el("a", "View on GitHub"); a.href = p.code; a.target = "_blank"; a.rel = "noopener";
-  links.appendChild(a); card.appendChild(links);
+  if (p.code) {
+    const links = el("div", "", "links");
+    const a = el("a", "View on GitHub"); a.href = p.code; a.target = "_blank"; a.rel = "noopener";
+    links.appendChild(a); card.appendChild(links);
+  }
   plist.appendChild(card);
 });
 
